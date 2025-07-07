@@ -1,150 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>README - Voice-Controlled Eye Comments Form</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f4f9;
-      color: #333;
-      margin: 0;
-      padding: 40px;
-    }
+# Voice-Controlled Eye Comments Form (Hands-Free)
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    }
+A fully voice-controlled HTML web form for ophthalmology observations.  
+Control the form entirely by speaking — no mouse or keyboard required!
 
-    h1, h2, h3 {
-      color: #007BFF;
-    }
+---
 
-    pre {
-      background: #f7f7f7;
-      padding: 15px;
-      border-radius: 6px;
-      overflow-x: auto;
-    }
+## How It Works
 
-    code {
-      background: #f0f0f0;
-      padding: 2px 4px;
-      border-radius: 4px;
-      font-size: 0.95em;
-    }
+✅ Starts recording automatically when you open the page  
+✅ Always listens for voice commands  
+✅ Switch fields by saying field names, for example:
+   - `right eye observation`
+   - `right comments`
+   - `left eye observation`
+   - `left comments`
+✅ Say `start` to begin dictating into the focused field  
+✅ Speak your observation or comments  
+✅ Say `stop` to pause dictation  
+✅ Repeat to change fields and continue filling text
 
-    ul, ol {
-      margin-left: 20px;
-    }
+---
 
-    .badge {
-      display: inline-block;
-      background: #007BFF;
-      color: #fff;
-      padding: 2px 8px;
-      border-radius: 6px;
-      font-size: 0.85em;
-      margin-right: 5px;
-    }
+## How to Use
 
-    .section {
-      margin-top: 30px;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Voice-Controlled Eye Comments Form (Hands-Free)</h1>
+1. Open the file `index.html` in your browser (Chrome, Edge, etc.).
+2. Speak any of these **field names**:
+    - `right eye observation`
+    - `right comments`
+    - `left eye observation`
+    - `left comments`
+3. The field will become active.
+4. Say `start` to begin recording text into that field.
+5. Speak your notes. They appear automatically in the field.
+6. Say `stop` to stop dictation.
+7. Speak another field name to switch.
 
-    <p>A fully voice-controlled HTML web form for ophthalmology observations.<br>
-    <strong>No clicking required — control the form entirely with your voice!</strong></p>
+---
 
-    <p>This project uses Windows Speech Recognition via the Web Speech API directly in the browser.</p>
+## Example Voice Flow
 
-    <div class="section">
-      <h2>Features</h2>
-      <ul>
-        <li><span class="badge">✅</span> Always listening for voice commands</li>
-        <li><span class="badge">✅</span> Switch fields by speaking their names</li>
-        <li><span class="badge">✅</span> Say <code>start</code> to begin dictation into a field</li>
-        <li><span class="badge">✅</span> Speak your observation or comments</li>
-        <li><span class="badge">✅</span> Say <code>stop</code> to pause dictation</li>
-        <li><span class="badge">✅</span> Completely hands-free experience</li>
-        <li><span class="badge">✅</span> No backend or server required</li>
-      </ul>
-    </div>
 
-    <div class="section">
-      <h2>How to Use</h2>
-      <ol>
-        <li>Open the file <code>index.html</code> in your browser (Chrome, Edge, etc.).</li>
-        <li>Speak any of these <strong>field names</strong> to select where you want to type:
-          <ul>
-            <li><code>right eye observation</code></li>
-            <li><code>right comments</code></li>
-            <li><code>left eye observation</code></li>
-            <li><code>left comments</code></li>
-          </ul>
-        </li>
-        <li>Once focused on the desired field, say: <code>start</code></li>
-        <li>Speak your observation or comments. Your speech will appear in the chosen field.</li>
-        <li>Say: <code>stop</code> to stop dictation.</li>
-        <li>Repeat the process to switch fields and continue dictation.</li>
-      </ol>
-    </div>
+---
 
-    <div class="section">
-      <h2>Example Voice Flow</h2>
-      <pre>
-You say: "right eye observation"
-→ Focus moves to the right eye observation field
+## Requirements
 
-You say: "start"
-→ Dictation begins
+- Internet connection is required (Web Speech API often relies on cloud services)
+- Works best on:
+    - Google Chrome
+    - Microsoft Edge
+- Windows recommended for best microphone integration
 
-You say: "conjunctival congestion noted"
-→ Text appears in the field
+> Note: Speech recognition may ask permission to access your microphone.
 
-You say: "stop"
-→ Dictation stops
+---
 
-You say: "left comments"
-→ Focus moves to the left comments field
+## Flaws and Limitations
 
-You say: "start"
-→ Dictation begins again
-      </pre>
-    </div>
+⚠ **Needs Internet:**  
+   - Most browsers send your speech to online servers for transcription.
+   - No offline mode without additional libraries or models.
 
-    <div class="section">
-      <h2>Requirements</h2>
-      <ul>
-        <li>Windows recommended (for best speech engine support)</li>
-        <li>Modern browser supporting the Web Speech API:
-          <ul>
-            <li>Google Chrome</li>
-            <li>Microsoft Edge</li>
-          </ul>
-        </li>
-      </ul>
-      <p><strong>Note:</strong> Speech recognition may ask permission to access your microphone the first time you load the page.</p>
-    </div>
+⚠ **Language Recognition Limitations:**  
+   - Windows or browser engines may misrecognize words in other languages (e.g. regional Indian languages).
+   - Accuracy drops in noisy environments or with strong accents.
 
-    <div class="section">
-      <h2>Project Structure</h2>
-      <pre>
-voice-eye-comments-form/
-├── index.html
-├── README.html
-└── .gitignore
-      </pre>
-    </div>
-  </div>
-</body>
-</html>
+⚠ **Delay (~3 seconds):**  
+   - You may experience a short delay between speaking and seeing the text appear.
+
+⚠ **False Activations:**  
+   - Speech recognition might incorrectly interpret background sounds as commands.
+
+⚠ **Not a Browser Extension Yet:**  
+   - Currently a standalone web page. Could be rewritten as an extension for broader integration.
+
+---
+
+## Advantages
+
+✅ No backend required  
+✅ Simple HTML + JavaScript  
+✅ Completely voice-controlled  
+✅ Works in modern browsers  
+✅ Could be converted into an extension for:
+   - EMR systems
+   - Ophthalmology tools
+   - Hands-free medical dictation
+
+---
+
+## Project Structure
+
+
+---
+
+## Future Improvements
+
+- Support multiple languages more accurately
+- Provide an offline option using models like Whisper.cpp
+- Package as a Chrome or Edge extension
+- Improve user feedback (e.g. show what was heard live)
