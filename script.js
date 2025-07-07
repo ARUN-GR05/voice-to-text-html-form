@@ -31,7 +31,11 @@ function startRecognition() {
   recognition.onerror = (e) => setStatus("❌ Error: " + e.error, "red");
 
   recognition.onresult = (event) => {
-    const transcript = event.results[event.results.length - 1][0].transcript.trim().toLowerCase();
+    let transcript = event.results[event.results.length - 1][0].transcript.trim().toLowerCase();
+
+    // Fix "i" to "eye" if spoken in field names
+    transcript = transcript.replace(/\bi\b/g, "eye");
+
     console.log("Heard:", transcript);
 
     if (transcript === "start" && currentField) {
