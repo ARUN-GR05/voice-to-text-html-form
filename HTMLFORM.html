@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Voice-Controlled Eye Comments Form</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h2>Voice-Controlled Eye Comments Form (Hands-Free)</h2>
+  <p>Speak the field name to switch. Say <strong>start</strong> to fill, <strong>stop</strong> to pause.</p>
+
+  <form>
+    <div class="eye-container">
+      <div class="eye-box">
+        <h3>Right Eye</h3>
+        <label>Observation</label>
+        <input type="text" id="right-eye" />
+        <label>Comments</label>
+        <textarea id="right-comments" rows="5"></textarea>
+      </div>
+
+      <div class="eye-box">
+        <h3>Left Eye</h3>
+        <label>Observation</label>
+        <input type="text" id="left-eye" />
+        <label>Comments</label>
+        <textarea id="left-comments" rows="5"></textarea>
+      </div>
+    </div>
+
+    <p id="status">🎤 Listening for field names... say "start" to dictate.</p>
+  </form>
+
+  <script src="script.js"></script>
+</body>
+</html>
