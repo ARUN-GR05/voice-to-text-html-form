@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClinicaSync | Voice Medical Scribe</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+
+<body>
+  <div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+      <h2 style="margin-bottom: 0;"><i class="fas fa-file-medical"></i> ClinicaSync</h2>
+      <a href="/dashboard" style="color: var(--secondary); text-decoration: none; font-weight: 600; font-size: 0.9rem;">
+        <i class="fas fa-chart-line"></i> Dashboard
+      </a>
+    </div>
+
+    <form id="voiceForm">
+      <div class="form-group">
+        <label for="name">Patient Name</label>
+        <input type="text" id="name" name="name" placeholder="John Doe" />
+      </div>
+
+      <div class="form-group">
+        <label for="place">Place</label>
+        <input type="text" id="place" name="place" placeholder="City / Clinic" />
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input type="number" id="age" name="age" placeholder="25" />
+        </div>
+
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender">
+            <option value="">Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="symptoms">Symptoms</label>
+        <textarea id="symptoms" name="symptoms" rows="3" placeholder="Click field and record symptoms..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="diagnosis">Diagnosis</label>
+        <textarea id="diagnosis" name="diagnosis" rows="2" placeholder="Click field and record diagnosis..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="prescription">Prescription</label>
+        <textarea id="prescription" name="prescription" rows="2"
+          placeholder="Click field and record medications..."></textarea>
+      </div>
+
+      <div class="buttons">
+        <button type="button" id="startBtn">
+          <i class="fas fa-microphone"></i> Start
+        </button>
+        <button type="button" id="stopBtn" disabled>
+          <i class="fas fa-stop"></i> Stop
+        </button>
+        <button type="button" id="submitBtn">
+          <i class="fas fa-cloud-upload-alt"></i> Submit to Records
+        </button>
+      </div>
+    </form>
+
+    <div id="status">Ready for input</div>
+
+    <div id="loading" class="hidden">
+      <div class="spinner"></div>
+      <p style="color: var(--secondary); font-weight: 600;">AI Scribe is transcribing...</p>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClinicaSync | Patient Records</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <style>
+        .container {
+            max-width: 1000px;
+        }
+
+        .search-box {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: #f8fafc;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        tr:hover {
+            background: #f1f5f9;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: #e2e8f0;
+        }
+
+        .nav-links {
+            margin-bottom: 20px;
+        }
+
+        .nav-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="nav-links">
+            <a href="/"><i class="fas fa-arrow-left"></i> Back to Form</a>
+        </div>
+
+        <h2><i class="fas fa-database"></i> Patient Records Dashboard</h2>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search by name, place, or diagnosis..." />
+        </div>
+
+        <div style="overflow-x: auto;">
+            <table id="recordsTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Place</th>
+                        <th>Age/Gender</th>
+                        <th>Summary</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in entries %}
+                    <tr>
+                        <td><strong>{{ entry.Name }}</strong></td>
+                        <td>{{ entry.Place }}</td>
+                        <td><span class="badge">{{ entry.Age }} / {{ entry.Gender }}</span></td>
+                        <td>
+                            <div
+                                style="font-size: 0.9rem; color: #64748b; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                <strong>Symptoms:</strong> {{ entry.Symptoms }}<br>
+                                <strong>Diagnosis:</strong> {{ entry.Diagnosis }}
+                            </div>
+                        </td>
+                        <td>
+                            <button class="view-btn"
+                                onclick="alert('Full Record:\n\nSymptoms: {{ entry.Symptoms }}\nDiagnosis: {{ entry.Diagnosis }}\nPrescription: {{ entry.Prescription }}')">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('searchInput').addEventListener('keyup', function () {
+            const q = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#recordsTable tbody tr');
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(q) ? '' : 'none';
+            });
+        });
+    </script>
+</body>
+
+</html>

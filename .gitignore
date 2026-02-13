@@ -1,0 +1,15 @@
+.env
+__pycache__/
+*.pyc
+data.xlsx
+data.csv
+google form 1/data.xlsx
+google form 1/data.csv
+google form 1/multi_audio_whisper_llama2_stats.xlsx
+google form 1/multi_audio_whisper_stats.xlsx
+voice-to-text-html-form/
+.vscode/
+.idea/
+*.wav
+*.mp3
+temp_audio/
